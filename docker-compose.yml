@@ -1,0 +1,36 @@
+services:
+  mqtt-broker:
+    image: eclipse-mosquitto
+    container_name: mqtt-broker
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+    restart: unless-stopped
+
+  node-red:
+    image: nodered/node-red
+    container_name: node-red
+    ports:
+      - 1880:1880
+    volumes:
+      - node_red_data:/data
+    depends_on:
+      - mqtt-broker
+    restart: unless-stopped
+
+
+  influxdb:
+    image: influxdb:2.7
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb2_data:/var/lib/influxdb2
+    restart: unless-stopped
+
+
+volumes:
+  node_red_data:
+  influxdb2_data:

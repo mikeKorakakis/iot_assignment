@@ -1,0 +1,916 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "SMART HOME",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "0b93cc3143d08fca",
+        "type": "mqtt-broker",
+        "name": "Mosquito Broker",
+        "broker": "mqtt-broker",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "10c54fc53d82507a",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": true
+    },
+    {
+        "id": "43fb44ed0af0026e",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "Arial,Arial,Helvetica,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "Arial,Arial,Helvetica,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "true",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 16,
+                "gy": 16,
+                "cx": 0,
+                "cy": 6,
+                "px": 12,
+                "py": 2
+            }
+        }
+    },
+    {
+        "id": "27706226524adfe7",
+        "type": "influxdb",
+        "hostname": "influxdb",
+        "port": 8086,
+        "protocol": "http",
+        "database": "smart_home",
+        "name": "influx",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "1.x",
+        "url": "http://localhost:8086",
+        "timeout": 10,
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "5b35f0faf5b6e7bb",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": 8086,
+        "protocol": "http",
+        "database": "database",
+        "name": "Influx out",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://influxdb:8086",
+        "timeout": 10,
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "5182de4cf6264542",
+        "type": "ui_group",
+        "name": "Θερμοκρασία",
+        "tab": "10c54fc53d82507a",
+        "order": 1,
+        "disp": false,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5f300eab03bacc3f",
+        "type": "ui_group",
+        "name": "Υγρασία",
+        "tab": "10c54fc53d82507a",
+        "order": 3,
+        "disp": false,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "be85b537f55b48b0",
+        "type": "ui_group",
+        "name": "Πίνακας Ελέγχου",
+        "tab": "10c54fc53d82507a",
+        "order": 4,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "52fc81078e38db1b",
+        "type": "ui_spacer",
+        "z": "f6f2187d.f17ca8",
+        "name": "spacer",
+        "group": "",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "b9d123d80ba92646",
+        "type": "ui_spacer",
+        "z": "f6f2187d.f17ca8",
+        "name": "spacer",
+        "group": "",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "e16d861d5fc41254",
+        "type": "ui_spacer",
+        "z": "f6f2187d.f17ca8",
+        "name": "spacer",
+        "group": "",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "2e09c69d95b20709",
+        "type": "json",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1070,
+        "y": 240,
+        "wires": [
+            [
+                "c90a2acce9a7e656",
+                "cf04cc1cc5af69fc",
+                "e5b3d5a84e73a4a9"
+            ]
+        ]
+    },
+    {
+        "id": "1a918d3bca007351",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "mqtt in - Κατάσταση Σπιτιού",
+        "topic": "home_status",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "0b93cc3143d08fca",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 900,
+        "y": 140,
+        "wires": [
+            [
+                "2e09c69d95b20709"
+            ]
+        ]
+    },
+    {
+        "id": "9b934b1a115266f7",
+        "type": "ui_gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "gauge - Θερμοκρασία",
+        "group": "5182de4cf6264542",
+        "order": 1,
+        "width": 6,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Θερμοκρασία",
+        "label": "units",
+        "format": "{{value}} °C",
+        "min": "0",
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1480,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "10b8050ef1eb49fb",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": " chart - Θερμοκρασία (ιστορικό)",
+        "group": "5182de4cf6264542",
+        "order": 2,
+        "width": 6,
+        "height": 6,
+        "label": " Θερμοκρασία (°C)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "40",
+        "removeOlder": "30",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#c52b2b",
+            "#a23634",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1510,
+        "y": 260,
+        "wires": [
+            []
+        ],
+        "info": "color: #FF0000;"
+    },
+    {
+        "id": "e5b3d5a84e73a4a9",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function - Θερμοκρασία",
+        "func": "msg.topic = \"home_status\";\nif (typeof msg.payload === \"string\") {\n    msg.payload = JSON.parse(msg.payload);\n}\n\nmsg.payload = msg.payload.temperature;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1210,
+        "y": 300,
+        "wires": [
+            [
+                "10b8050ef1eb49fb",
+                "9b934b1a115266f7",
+                "c276f83b798f0ff4",
+                "4ab02499754e9b26"
+            ]
+        ]
+    },
+    {
+        "id": "c276f83b798f0ff4",
+        "type": "join",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": true,
+        "timeout": "",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1430,
+        "y": 460,
+        "wires": [
+            [
+                "5b903405a5856fd4",
+                "1f8c9b089bdde83e"
+            ]
+        ]
+    },
+    {
+        "id": "5b903405a5856fd4",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function - Σύγκριση Θερμοκρασίας",
+        "func": "const current = msg.payload.home_status;\nconst desired = msg.payload.desired_temp;\nconst mode = msg.payload.mode; // \"heat\", \"cool\", or \"idle\"\n\nlet command = \"IDLE\";\n\nif (mode === \"heat\") {\n    command = current < desired ? \"HEAT_ON\" : \"HEAT_OFF\";\n} else if (mode === \"cool\") {\n    command = current > desired ? \"COOL_ON\" : \"COOL_OFF\";\n} else if (mode === \"idle\") {\n    command = \"IDLE\";\n}\n\nmsg.payload = command;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1160,
+        "y": 640,
+        "wires": [
+            [
+                "817fe81986cc7bbd",
+                "79741e08e6cbb4f8",
+                "a47dcf8b74b88acc"
+            ]
+        ]
+    },
+    {
+        "id": "817fe81986cc7bbd",
+        "type": "mqtt out",
+        "z": "f6f2187d.f17ca8",
+        "name": "mqtt out - Εντολή Θερμοστάτη",
+        "topic": "hvac_status",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "0b93cc3143d08fca",
+        "x": 1570,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "213496104e629ac9",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function - Επιθυμητή Θερμοκρασία",
+        "func": "msg.topic = \"desired_temp\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1200,
+        "y": 480,
+        "wires": [
+            [
+                "c276f83b798f0ff4"
+            ]
+        ]
+    },
+    {
+        "id": "79741e08e6cbb4f8",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1500,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "1f8c9b089bdde83e",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1600,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "4ab02499754e9b26",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1440,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "06687f57f1a43be9",
+        "type": "ui_dropdown",
+        "z": "f6f2187d.f17ca8",
+        "name": "dropdown - Λειτουργία",
+        "label": "Λειτουργία",
+        "tooltip": "",
+        "place": "Λειτουργία",
+        "group": "be85b537f55b48b0",
+        "order": 1,
+        "width": "7",
+        "height": 1,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "ΑΝΑΜΟΝΗ",
+                "value": "idle",
+                "type": "str"
+            },
+            {
+                "label": "ΘΕΡΜΑΝΣΗ",
+                "value": "heat",
+                "type": "str"
+            },
+            {
+                "label": "ΨΥΞΗ",
+                "value": "cool",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "mode",
+        "topicType": "msg",
+        "className": "left-20",
+        "x": 900,
+        "y": 420,
+        "wires": [
+            [
+                "e954275230230133"
+            ]
+        ]
+    },
+    {
+        "id": "e954275230230133",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function - Λειτουργία",
+        "func": "msg.topic = \"mode\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 420,
+        "wires": [
+            [
+                "c276f83b798f0ff4"
+            ]
+        ]
+    },
+    {
+        "id": "cf04cc1cc5af69fc",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function - Υγρασία",
+        "func": "msg.topic = \"home_status\";\nif (typeof msg.payload === \"string\") {\n    msg.payload = JSON.parse(msg.payload);\n}\n\nmsg.payload = msg.payload.humidity;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1270,
+        "y": 180,
+        "wires": [
+            [
+                "1cd62c84701afe98",
+                "59dbb67f9d442b91"
+            ]
+        ]
+    },
+    {
+        "id": "1cd62c84701afe98",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": " chart - Υγρασία (ιστορικό)",
+        "group": "5f300eab03bacc3f",
+        "order": 2,
+        "width": 6,
+        "height": 6,
+        "label": "Υγρασία (%)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "30",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#227ab9",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#a069ba",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1490,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "59dbb67f9d442b91",
+        "type": "ui_gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "gauge - Υγρασία",
+        "group": "5f300eab03bacc3f",
+        "order": 1,
+        "width": 6,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Υγρασία",
+        "label": "units",
+        "format": "{{value}} %",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#0006b3",
+            "#3ddbd9",
+            "#dcdc3e"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1520,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "719063ab84e1ec0c",
+        "type": "ui_numeric",
+        "z": "f6f2187d.f17ca8",
+        "name": "numeric -  Επιθυμητή θερμοκρασία",
+        "label": "Επιλογή Θερμοκρασίας",
+        "tooltip": "",
+        "group": "be85b537f55b48b0",
+        "order": 2,
+        "width": "7",
+        "height": 1,
+        "wrap": false,
+        "passthru": true,
+        "topic": "desired_temp",
+        "topicType": "msg",
+        "format": "{{value}}",
+        "min": "10",
+        "max": "30",
+        "step": 1,
+        "className": "left-20",
+        "x": 900,
+        "y": 480,
+        "wires": [
+            [
+                "213496104e629ac9"
+            ]
+        ]
+    },
+    {
+        "id": "649c36c21ce268f0",
+        "type": "ui_text",
+        "z": "f6f2187d.f17ca8",
+        "group": "be85b537f55b48b0",
+        "order": 3,
+        "width": 12,
+        "height": 2,
+        "name": "text - Κατάσταση Λειτουργίας",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1580,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "a47dcf8b74b88acc",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function - Κατάσταση Λειτουργίας",
+        "func": "let status_text = \"❓ Άγνωστη κατάσταση\";\nlet command = msg.payload;\n\nif (command === \"HEAT_ON\") {\n    status_text = \"🔥 Θέρμανση: Ενεργή\";\n} else if (command === \"HEAT_OFF\") {\n    status_text = \"🛑 Θέρμανση: Ανενεργή\";\n} else if (command === \"COOL_ON\") {\n    status_text = \"❄️ Ψύξη: Ενεργή\";\n} else if (command === \"COOL_OFF\") {\n    status_text = \"🛑 Ψύξη: Ανενεργή\";\n} else if (command === \"IDLE\") {\n    status_text = \"⏸️ Αναμονή\";\n}\n\nmsg.payload = status_text;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1200,
+        "y": 780,
+        "wires": [
+            [
+                "e2b9afac17db755b",
+                "649c36c21ce268f0"
+            ]
+        ]
+    },
+    {
+        "id": "e2b9afac17db755b",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1500,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "d471b1fdcc61a617",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "inject - Αρχική Λειτουργία",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "mode",
+        "payload": "idle",
+        "payloadType": "str",
+        "x": 310,
+        "y": 420,
+        "wires": [
+            [
+                "6bd4345a414ef73d"
+            ]
+        ]
+    },
+    {
+        "id": "04c5056a0d5e7f0d",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "inject - Αρχική Επιθυμητή Θερμοκρασία",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "desired_temp",
+        "payload": "25",
+        "payloadType": "num",
+        "x": 200,
+        "y": 480,
+        "wires": [
+            [
+                "48974d961b4cc0cd"
+            ]
+        ]
+    },
+    {
+        "id": "48974d961b4cc0cd",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function - Αρχική Θερμοκρασία ",
+        "func": "flow.set(\"desired_temp\", msg.payload); // store\nreturn msg; // send to next node (UI)",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 480,
+        "wires": [
+            [
+                "719063ab84e1ec0c"
+            ]
+        ]
+    },
+    {
+        "id": "6bd4345a414ef73d",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function - Αρχική Λειτουργία",
+        "func": "flow.set(\"mode\", msg.payload); // store\nreturn msg; // send to next node (UI)",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 420,
+        "wires": [
+            [
+                "06687f57f1a43be9"
+            ]
+        ]
+    },
+    {
+        "id": "c90a2acce9a7e656",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function - influxdb",
+        "func": "if (typeof msg.payload === \"string\") {\n  msg.payload = JSON.parse(msg.payload);\n}\n\nconst deviceId = msg.payload.device_id;\n\nif (\n  typeof msg.payload.temperature === \"undefined\" ||\n  typeof msg.payload.humidity === \"undefined\" ||\n  typeof deviceId === \"undefined\"\n) {\n  node.warn(\"Invalid payload: \" + JSON.stringify(msg.payload));\n  return null;\n}\n\nmsg.measurement = \"environment\";\nmsg.tags = { device: deviceId };\nmsg.payload = [{\n  temperature: Number(msg.payload.temperature),\n  humidity: Number(msg.payload.humidity)\n},\n{\n  tag: msg.payload.device_id\n}\n];\n// Optional timestamp (in nanoseconds)\nmsg.timestamp = Date.now() * 1e6;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1230,
+        "y": 80,
+        "wires": [
+            [
+                "0cee4c22c1e04706"
+            ]
+        ]
+    },
+    {
+        "id": "0cee4c22c1e04706",
+        "type": "influxdb out",
+        "z": "f6f2187d.f17ca8",
+        "influxdb": "5b35f0faf5b6e7bb",
+        "name": "Influx out",
+        "measurement": "",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "admin",
+        "bucket": "smart_home",
+        "x": 1460,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "227ab6aa71f766be",
+        "type": "ui_template",
+        "z": "f6f2187d.f17ca8",
+        "group": "",
+        "name": "Custom CSS",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "format": "<style type=\"text/css\">\n.masonry-container{\n    max-width: 300px !important;\n}\n.nr-dashboard-cardtitle{\n    text-align: center !important;\n}\n\n.nr-dashboard-cardcontainer\n{\ntext-align: center !important;\n}\n.nr-dashboard-cardcontainer:first-child\n{\nmargin: auto !important;\n}\n.left-32{\n    left:32% !important;\n}\n.left-20{\n    left:20% !important;\n}\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "global",
+        "className": "",
+        "x": 850,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    }
+]
