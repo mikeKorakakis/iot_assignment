@@ -1,5 +1,4 @@
-[
-    {
+[{
         "id": "f6f2187d.f17ca8",
         "type": "tab",
         "label": "SMART HOME",
@@ -9,7 +8,7 @@
     {
         "id": "0b93cc3143d08fca",
         "type": "mqtt-broker",
-        "name": "Mosquito Broker",
+        "name": "Mosquitto Broker",
         "broker": "mqtt-broker",
         "port": 1883,
         "clientid": "",
@@ -527,8 +526,7 @@
         "height": 1,
         "passthru": true,
         "multiple": false,
-        "options": [
-            {
+        "options": [{
                 "label": "ΑΝΑΜΟΝΗ",
                 "value": "idle",
                 "type": "str"
@@ -761,8 +759,7 @@
         "type": "inject",
         "z": "f6f2187d.f17ca8",
         "name": "inject - Αρχική Λειτουργία",
-        "props": [
-            {
+        "props": [{
                 "p": "payload"
             },
             {
@@ -790,8 +787,7 @@
         "type": "inject",
         "z": "f6f2187d.f17ca8",
         "name": "inject - Αρχική Επιθυμητή Θερμοκρασία",
-        "props": [
-            {
+        "props": [{
                 "p": "payload"
             },
             {
